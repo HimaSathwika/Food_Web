@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signup - FoodWeb</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(#ff6a41, rgb(214, 214, 214));
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .signup-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .signup-container input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .signup-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6a41;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .signup-container button:hover {
+      background-color: #e85c35;
+    }
+    .signup-container .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .signup-container .link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .signup-container .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>Create Your FoodWeb Account</h2>
+    <!-- ✅ Form with ID for JS -->
+    <form id="signupForm">
+      <input type="text" name="fullname" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="link">
+      <p>Already have an account? <a href="signin.html">Login here</a></p>
+    </div>
+  </div>
+
+  <script>
+  document.getElementById("signupForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const fullname = this.fullname.value.trim();
+    const email = this.email.value.trim();
+    const username = this.username.value.trim();
+    const password = this.password.value;
+    const confirmPassword = this.confirm_password.value;
+
+    if (password !== confirmPassword) {
+      alert("⚠️ Passwords do not match!");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullname, email, username, password })
+      });
+
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        result = { message: await response.text() };
+      }
+
+      console.log("Signup response:", result);
+
+      if (response.ok) {
+        alert("✅ Signup successful! Please login now.");
+        window.location.href = "signin.html"; // redirect to login
+      } else {
+        alert("❌ Signup failed: " + (result.message || "Unknown error"));
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("⚠️ Could not connect to server.");
+    }
+  });
+  </script>
+
+</body>
+</html>

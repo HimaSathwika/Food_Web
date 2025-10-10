@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noodles - FoodWeb</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #fff; }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+    }
+    .navbar-brand { color: #fff !important; font-weight: bold; }
+    .nav-link { color: #fff !important; font-weight: 500; }
+    .btn-outline-light { border: 1px solid #fff; color: #fff; }
+    .btn-outline-light:hover { background: white; color: #dd2476; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+      url('https://images.unsplash.com/photo-1617196038394-46f2fdf01d86') center/cover no-repeat;
+      height: 20vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dish Cards */
+    .menu-section h2 {
+      color: #dd2476;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .dish-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .dish-card img {
+      border-radius: 15px 15px 0 0;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .dish-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+    .dish-card:hover img {
+      transform: scale(1.1);
+    }
+    .price-tag {
+      color: #ff512f;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .btn-buy, .btn-now {
+      border-radius: 25px;
+      padding: 8px 18px;
+      border: none;
+      transition: 0.3s;
+      margin: 5px;
+    }
+    .btn-buy {
+      background: #ff512f;
+      color: white;
+    }
+    .btn-buy:hover {
+      background: #e63e00;
+      transform: scale(1.05);
+    }
+    .btn-now {
+      background: #28a745;
+      color: white;
+    }
+    .btn-now:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #dd2476, #ff512f);
+      color: white;
+      padding: 20px;
+    }
+    footer a { color: #fff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg shadow">
+    <a class="navbar-brand" href="index.html">🍴 FoodWeb</a>
+    <div class="ml-auto">
+      <a class="btn btn-outline-light mx-1" href="signin.html">Sign In</a>
+      <a class="btn btn-outline-light mx-1" href="#">Cart 🛒</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Delicious Noodles 🍜</h1>
+  </section>
+
+  <!-- Menu -->
+  <div class="container my-5 menu-section">
+    <div class="row">
+
+      <!-- Soba Noodles -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://insanelygoodrecipes.com/wp-content/uploads/2022/10/Lo-Mein-and-Chow-Mein.jpg" alt="Soba Noodles">
+          <div class="card-body text-center">
+            <h5 class="card-title">Soba Noodles</h5>
+            <p class="card-text">Japanese buckwheat noodles with soy-based sauce.</p>
+            <p class="price-tag">₹120</p>
+            <button class="btn-buy" onclick="addToCart('Soba Noodles', 120)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Soba Noodles', 120)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ramen -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://insanelygoodrecipes.com/wp-content/uploads/2022/10/Ramen-Noodles.jpg" alt="Ramen">
+          <div class="card-body text-center">
+            <h5 class="card-title">Ramen</h5>
+            <p class="card-text">Classic Japanese ramen with broth, egg, and veggies.</p>
+            <p class="price-tag">₹150</p>
+            <button class="btn-buy" onclick="addToCart('Ramen', 150)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Ramen', 150)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Glass Noodles -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://insanelygoodrecipes.com/wp-content/uploads/2022/10/Glass-Noodles.jpg" alt="Glass Noodles">
+          <div class="card-body text-center">
+            <h5 class="card-title">Glass Noodles</h5>
+            <p class="card-text">Light, transparent noodles perfect with stir-fry.</p>
+            <p class="price-tag">₹140</p>
+            <button class="btn-buy" onclick="addToCart('Glass Noodles', 140)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Glass Noodles', 140)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fried Noodles -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://tse1.mm.bing.net/th?id=OIP.RMyB2nLJOX7oCKpW_8K-_wHaEK&pid=Api&P=0&h=180" alt="Fried Noodles">
+          <div class="card-body text-center">
+            <h5 class="card-title">Fried Noodles</h5>
+            <p class="card-text">Crispy stir-fried noodles with mixed veggies.</p>
+            <p class="price-tag">₹130</p>
+            <button class="btn-buy" onclick="addToCart('Fried Noodles', 130)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Fried Noodles', 130)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yi Mein -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://insanelygoodrecipes.com/wp-content/uploads/2022/10/Yi-Mein.jpg" alt="Yi Mein">
+          <div class="card-body text-center">
+            <h5 class="card-title">Yi Mein</h5>
+            <p class="card-text">Traditional Chinese celebration noodles.</p>
+            <p class="price-tag">₹160</p>
+            <button class="btn-buy" onclick="addToCart('Yi Mein', 160)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Yi Mein', 160)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wonton Noodles -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://insanelygoodrecipes.com/wp-content/uploads/2022/10/Wonton-Noodles.jpg" alt="Wonton Noodles">
+          <div class="card-body text-center">
+            <h5 class="card-title">Wonton Noodles</h5>
+            <p class="card-text">Noodles served with savory wonton dumplings.</p>
+            <p class="price-tag">₹170</p>
+            <button class="btn-buy" onclick="addToCart('Wonton Noodles', 170)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Wonton Noodles', 170)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>&copy; 2025 FoodWeb. All rights reserved. | <a href="index.html">Home</a></p>
+  </footer>
+
+  <script>
+    function addToCart(item, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({item, price});
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(item + " added to cart!");
+    }
+
+    function buyNow(item, price) {
+      localStorage.setItem('buyNow', JSON.stringify({item, price}));
+      alert("Proceeding to checkout for " + item + "!");
+      window.location.href = "checkout.html"; // create later
+    }
+  </script>
+
+</body>
+</html>

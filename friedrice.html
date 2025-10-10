@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fried Rice - FoodWeb</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #fff; }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+    }
+    .navbar-brand { color: #fff !important; font-weight: bold; }
+    .nav-link { color: #fff !important; font-weight: 500; }
+    .btn-outline-light { border: 1px solid #fff; color: #fff; }
+    .btn-outline-light:hover { background: white; color: #dd2476; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+      url('https://www.whiskaffair.com/wp-content/uploads/2020/12/Vegetable-Fried-Rice-2-3.jpg') center/cover no-repeat;
+      height: 20vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dish Cards */
+    .menu-section h2 {
+      color: #dd2476;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .dish-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .dish-card img {
+      border-radius: 15px 15px 0 0;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .dish-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+    .dish-card:hover img {
+      transform: scale(1.1);
+    }
+    .price-tag {
+      color: #ff512f;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .btn-buy, .btn-now {
+      border-radius: 25px;
+      padding: 8px 18px;
+      border: none;
+      transition: 0.3s;
+      margin: 5px;
+    }
+    .btn-buy {
+      background: #ff512f;
+      color: white;
+    }
+    .btn-buy:hover {
+      background: #e63e00;
+      transform: scale(1.05);
+    }
+    .btn-now {
+      background: #28a745;
+      color: white;
+    }
+    .btn-now:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #dd2476, #ff512f);
+      color: white;
+      padding: 20px;
+    }
+    footer a { color: #fff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg shadow">
+    <a class="navbar-brand" href="index.html">🍴 FoodWeb</a>
+    <div class="ml-auto">
+      <a class="btn btn-outline-light mx-1" href="signin.html">Sign In</a>
+      <a class="btn btn-outline-light mx-1" href="#">Cart 🛒</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Delicious Fried Rice 🍚</h1>
+  </section>
+
+  <!-- Menu -->
+  <div class="container my-5 menu-section">
+    <div class="row">
+
+      <!-- Veg Fried Rice -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ37POdbtXgs2mDqS_b8jAguEzA4hWbenNp3w&s" alt="Veg Fried Rice">
+          <div class="card-body text-center">
+            <h5 class="card-title">Veg Fried Rice</h5>
+            <p class="card-text">Classic stir-fried rice with colorful veggies.</p>
+            <p class="price-tag">₹120</p>
+            <button class="btn-buy" onclick="addToCart('Veg Fried Rice', 120)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Veg Fried Rice', 120)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chicken Fried Rice -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdYscNsOtcOqTmjr0kQES62GqlrNLyk3D7Lg&s" alt="Chicken Fried Rice">
+          <div class="card-body text-center">
+            <h5 class="card-title">Chicken Fried Rice</h5>
+            <p class="card-text">Rice tossed with juicy chicken and veggies.</p>
+            <p class="price-tag">₹180</p>
+            <button class="btn-buy" onclick="addToCart('Chicken Fried Rice', 180)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Chicken Fried Rice', 180)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Egg Fried Rice -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://christieathome.com/wp-content/uploads/2021/07/Egg-Fried-Rice-5.jpg" alt="Egg Fried Rice">
+          <div class="card-body text-center">
+            <h5 class="card-title">Egg Fried Rice</h5>
+            <p class="card-text">Fluffy rice stir-fried with scrambled eggs.</p>
+            <p class="price-tag">₹150</p>
+            <button class="btn-buy" onclick="addToCart('Egg Fried Rice', 150)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Egg Fried Rice', 150)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prawn Fried Rice -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://www.licious.in/blog/wp-content/uploads/2022/07/shutterstock_1582779079.jpg" alt="Prawn Fried Rice">
+          <div class="card-body text-center">
+            <h5 class="card-title">Prawn Fried Rice</h5>
+            <p class="card-text">Flavorful fried rice with prawns & spices.</p>
+            <p class="price-tag">₹220</p>
+            <button class="btn-buy" onclick="addToCart('Prawn Fried Rice', 220)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Prawn Fried Rice', 220)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schezwan Fried Rice -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfz0B6-nMwWc5R9ZVdPqULfE-YH_8qabiaYw&s" alt="Schezwan Fried Rice">
+          <div class="card-body text-center">
+            <h5 class="card-title">Schezwan Fried Rice</h5>
+            <p class="card-text">Spicy Indo-Chinese rice with Schezwan sauce.</p>
+            <p class="price-tag">₹160</p>
+            <button class="btn-buy" onclick="addToCart('Schezwan Fried Rice', 160)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Schezwan Fried Rice', 160)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Singapore Fried Rice -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnLZT48m53r6npiyI4G5eyLgEl1mNwZcxOg&s" alt="Singapore Fried Rice">
+          <div class="card-body text-center">
+            <h5 class="card-title">Singapore Fried Rice</h5>
+            <p class="card-text">Aromatic fried rice with bold Singapore flavors.</p>
+            <p class="price-tag">₹190</p>
+            <button class="btn-buy" onclick="addToCart('Singapore Fried Rice', 190)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Singapore Fried Rice', 190)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>&copy; 2025 FoodWeb. All rights reserved. | <a href="index.html">Home</a></p>
+  </footer>
+
+  <script>
+    function addToCart(item, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({item, price});
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(item + " added to cart!");
+    }
+
+    function buyNow(item, price) {
+      localStorage.setItem('buyNow', JSON.stringify({item, price}));
+      alert("Proceeding to checkout for " + item + "!");
+      window.location.href = "checkout.html"; // to be created
+    }
+  </script>
+
+</body>
+</html>

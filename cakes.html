@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cakes - FoodWeb</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #fff; }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+    }
+    .navbar-brand { color: #fff !important; font-weight: bold; }
+    .nav-link { color: #fff !important; font-weight: 500; }
+    .btn-outline-light { border: 1px solid #fff; color: #fff; }
+    .btn-outline-light:hover { background: white; color: #dd2476; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+      url('https://images.unsplash.com/photo-1578985545062-69928b1d9587') center/cover no-repeat;
+      height: 20vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dish Cards */
+    .menu-section h2 {
+      color: #dd2476;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .dish-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .dish-card img {
+      border-radius: 15px 15px 0 0;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .dish-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+    .dish-card:hover img {
+      transform: scale(1.1);
+    }
+    .price-tag {
+      color: #ff512f;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .btn-buy, .btn-now {
+      border-radius: 25px;
+      padding: 8px 18px;
+      border: none;
+      transition: 0.3s;
+      margin: 5px;
+    }
+    .btn-buy {
+      background: #ff512f;
+      color: white;
+    }
+    .btn-buy:hover {
+      background: #e63e00;
+      transform: scale(1.05);
+    }
+    .btn-now {
+      background: #28a745;
+      color: white;
+    }
+    .btn-now:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #dd2476, #ff512f);
+      color: white;
+      padding: 20px;
+    }
+    footer a { color: #fff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg shadow">
+    <a class="navbar-brand" href="index.html">🍴 FoodWeb</a>
+    <div class="ml-auto">
+      <a class="btn btn-outline-light mx-1" href="signin.html">Sign In</a>
+      <a class="btn btn-outline-light mx-1" href="#">Cart 🛒</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+  </section>
+
+  <!-- Menu -->
+  <div class="container my-5 menu-section">
+    <div class="row">
+
+      <!-- Chocolate Cake -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://static.toiimg.com/thumb/53096885.cms?imgsize=1572013&width=800&height=800" alt="Chocolate Cake">
+          <div class="card-body text-center">
+            <h5 class="card-title">Chocolate Cake</h5>
+            <p class="card-text">Rich and moist chocolate layered cake.</p>
+            <p class="price-tag">₹300</p>
+            <button class="btn-buy" onclick="addToCart('Chocolate Cake', 300)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Chocolate Cake', 300)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vanilla Cake -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBOzl5BlqY829u1BYHrIukcrFLQfAAFPhtJw&s" alt="Vanilla Cake">
+          <div class="card-body text-center">
+            <h5 class="card-title">Vanilla Cake</h5>
+            <p class="card-text">Classic vanilla sponge with buttercream.</p>
+            <p class="price-tag">₹280</p>
+            <button class="btn-buy" onclick="addToCart('Vanilla Cake', 280)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Vanilla Cake', 280)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strawberry Cake -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://www.allrecipes.com/thmb/Huh-I63aYc_zZ0NbLECEpFD0BcI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/60564-StrawberryCakeFromScratch-ddfms-4X3-0291-1-cd8254e28ea14112b5fc49e25cd08ff6.jpg" alt="Strawberry Cake">
+          <div class="card-body text-center">
+            <h5 class="card-title">Strawberry Cake</h5>
+            <p class="card-text">Fluffy cake with fresh strawberries & cream.</p>
+            <p class="price-tag">₹320</p>
+            <button class="btn-buy" onclick="addToCart('Strawberry Cake', 320)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Strawberry Cake', 320)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carrot Cake -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://www.glorioustreats.com/wp-content/uploads/2014/05/best-carrot-cake-recipe-square.jpeg" alt="Carrot Cake">
+          <div class="card-body text-center">
+            <h5 class="card-title">Carrot Cake</h5>
+            <p class="card-text">Moist carrot cake topped with cream cheese frosting.</p>
+            <p class="price-tag">₹310</p>
+            <button class="btn-buy" onclick="addToCart('Carrot Cake', 310)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Carrot Cake', 310)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Red Velvet Cake -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://www.allrecipes.com/thmb/cATXp-hng9wm6I_UvSoHn6fzHfc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ALR-276078-homemade-red-velvet-cake-with-cream-cheese-frosting-VAT-4x3-1135ba47a4b74be28f73df983fc1fd2d.jpg" alt="Red Velvet Cake">
+          <div class="card-body text-center">
+            <h5 class="card-title">Red Velvet Cake</h5>
+            <p class="card-text">Soft red velvet with layers of cream cheese.</p>
+            <p class="price-tag">₹350</p>
+            <button class="btn-buy" onclick="addToCart('Red Velvet Cake', 350)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Red Velvet Cake', 350)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cheesecake -->
+      <div class="col-md-4 mb-4">
+        <div class="card dish-card">
+          <img src="https://www.cookingclassy.com/wp-content/uploads/2019/11/cheesecake-8.jpg" alt="Cheesecake">
+          <div class="card-body text-center">
+            <h5 class="card-title">Cheesecake</h5>
+            <p class="card-text">Classic creamy cheesecake with biscuit base.</p>
+            <p class="price-tag">₹400</p>
+            <button class="btn-buy" onclick="addToCart('Cheesecake', 400)">Add to Cart</button>
+            <button class="btn-now" onclick="buyNow('Cheesecake', 400)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>&copy; 2025 FoodWeb. All rights reserved. | <a href="index.html">Home</a></p>
+  </footer>
+
+  <script>
+    function addToCart(item, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({item, price});
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(item + " added to cart!");
+    }
+
+    function buyNow(item, price) {
+      localStorage.setItem('buyNow', JSON.stringify({item, price}));
+      alert("Proceeding to checkout for " + item + "!");
+      window.location.href = "checkout.html"; // create later
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - FoodWeb</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #f9f9f9; }
+    .navbar { background: linear-gradient(90deg, #ff512f, #dd2476); }
+    .navbar-brand, .nav-link { color: #fff !important; }
+    .checkout-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .checkout-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #dd2476;
+    }
+    .btn-order {
+      width: 100%;
+      padding: 12px;
+      border-radius: 25px;
+      font-size: 18px;
+      background: #28a745;
+      color: white;
+      border: none;
+    }
+    .btn-order:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="index.html">🍴 FoodWeb</a>
+    <div class="ml-auto">
+      <a class="btn btn-outline-light mx-1" href="signin.html">Sign In</a>
+      <a class="btn btn-outline-light mx-1" href="checkout.html">Cart 🛒</a>
+    </div>
+  </nav>
+
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <div id="order-summary"></div>
+    <hr>
+    <button class="btn-order" onclick="placeOrder()">Place Order ✅</button>
+  </div>
+
+  <script>
+    function loadCheckout() {
+      let buyNow = JSON.parse(localStorage.getItem('buyNow'));
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let summary = document.getElementById("order-summary");
+
+      if (buyNow) {
+        summary.innerHTML = `
+          <h4>Buy Now Item</h4>
+          <p><strong>${buyNow.item}</strong> - ₹${buyNow.price}</p>
+        `;
+      } else if (cart.length > 0) {
+        let html = "<h4>Cart Items</h4><ul class='list-group mb-3'>";
+        let total = 0;
+        cart.forEach((c, i) => {
+          html += `<li class="list-group-item d-flex justify-content-between">
+                     ${c.item} <span>₹${c.price}</span>
+                   </li>`;
+          total += c.price;
+        });
+        html += `</ul><h5>Total: ₹${total}</h5>`;
+        summary.innerHTML = html;
+      } else {
+        summary.innerHTML = "<p>Your cart is empty.</p>";
+      }
+    }
+
+    function placeOrder() {
+      alert("✅ Order placed successfully! Thank you for ordering.");
+      localStorage.removeItem('buyNow');
+      localStorage.removeItem('cart');
+      window.location.href = "index.html";
+    }
+
+    loadCheckout();
+  </script>
+</body>
+</html>

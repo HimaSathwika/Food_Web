@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodWeb - Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #fff; }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+    }
+    .navbar-brand { color: #fff !important; font-weight: bold; }
+    .nav-link { color: #fff !important; font-weight: 500; }
+    .btn-outline-light { border: 1px solid #fff; color: #fff; }
+    .btn-outline-light:hover { background: white; color: #dd2476; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1604908177774-9801a7d61d6c') center/cover no-repeat;
+      height: 45vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .hero p { font-size: 1.3rem; }
+    .hero .btn {
+      margin-top: 20px;
+      background: #ff512f;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+    .hero .btn:hover { transform: scale(1.1); background: #ff7043; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Menu Cards */
+    .menu-section h2 {
+      color: #dd2476;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .menu-card {
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .menu-card img {
+      border-radius: 15px;
+      transition: transform 0.4s;
+    }
+    .menu-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .menu-card:hover img {
+      transform: scale(1.1);
+    }
+    .price-tag {
+      color: #ff512f;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #dd2476, #ff512f);
+      color: white;
+      padding: 20px;
+    }
+    footer a { color: #fff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg shadow">
+    <a class="navbar-brand" href="index.html">🍴 FoodWeb</a>
+    <div class="ml-auto">
+      <a class="btn btn-outline-light mx-1" href="signin.html">Sign In</a>
+      <a class="btn btn-outline-light mx-1" href="checkout.html">Cart 🛒</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="overlay">
+      <h1>Freshness in Every Bite 🍴</h1>
+      <p>Discover new tastes, delivered fresh to your table.</p>
+      <a href="#menu" class="btn">Order Now</a>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <div id="menu" class="container my-5 menu-section">
+    <h2 class="text-center">✨ Our Menu ✨</h2>
+    <div class="row text-center">
+      <div class="col-md-3 mb-4">
+        <div class="card menu-card">
+          <img src="https://tse4.mm.bing.net/th?id=OIP.bAi4BAmtk6OyVLcGA1fu0wHaHa&pid=Api&P=0&h=180" class="img-fluid">
+          <div class="card-body">
+            <h5>Noodles 🍜</h5>
+            <p class="price-tag">From ₹120</p>
+            <a href="noodles.html" class="btn btn-sm btn-danger">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card menu-card">
+          <img src="https://www.licious.in/blog/wp-content/uploads/2023/01/Shutterstock_2047827035.jpg" class="img-fluid">
+          <div class="card-body">
+            <h5>Biryani 🍗</h5>
+            <p class="price-tag">From ₹180</p>
+            <a href="biryani.html" class="btn btn-sm btn-danger">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card menu-card">
+          <img src="https://tse4.mm.bing.net/th?id=OIP.6TbOEpe5a_9zXWsDIUP2SAHaHa&pid=Api&P=0&h=180" class="img-fluid">
+          <div class="card-body">
+            <h5>Fried Rice 🍚</h5>
+            <p class="price-tag">From ₹150</p>
+            <a href="friedrice.html" class="btn btn-sm btn-danger">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="card menu-card">
+          <img src="https://tse2.mm.bing.net/th?id=OIP.kZUHYhayt7xcNPOlapRCnQHaE8&pid=Api&P=0&h=180" class="img-fluid">
+          <div class="card-body">
+            <h5>Cakes 🎂</h5>
+            <p class="price-tag">From ₹250</p>
+            <a href="cakes.html" class="btn btn-sm btn-danger">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>&copy; 2025 FoodWeb. All rights reserved. | <a href="#">Contact</a></p>
+  </footer>
+</body>
+</html>
